@@ -99,8 +99,9 @@ jest.mock("axios", () => ({
 describe('Posts', () => {
 
     const wrapper = mount(Posts, {router, store, localVue});
+    it('Date in correct format', () => {
 
-    it('1 == 1', function () {
-        expect(true).toBe(true)
+        wrapper.vm.getPosts();
+        expect(wrapper.vm.posts.length).toBe(testData.length);
     });
 });

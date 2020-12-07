@@ -67,7 +67,7 @@
             this.getPosts()
         },
         filters: {
-            formatDate: function (value) {
+             formatDate: function (value) {
                 return moment(value).format('LLLL');
             },
             profileName: function (profile) {
