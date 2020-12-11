@@ -2,6 +2,7 @@ import {mount, createLocalVue} from '@vue/test-utils'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import Posts from "../../src/components/Posts.vue";
+import moment from 'moment'
 
 const localVue = createLocalVue();
 
@@ -99,9 +100,20 @@ jest.mock("axios", () => ({
 describe('Posts', () => {
 
     const wrapper = mount(Posts, {router, store, localVue});
-    it('Date in correct format', () => {
+    it('Number of posts displayed is same with number of posts in json', () => {
 
         wrapper.vm.getPosts();
         expect(wrapper.vm.posts.length).toBe(testData.length);
     });
 });
+
+describe('Posts', () => {
+
+    const wrapper = mount(Posts, {router, store, localVue});
+    it('Date in correct format. ', () => {
+        wrapper.vm.getPosts();
+        let post1=wrapper.vm.posts[0]
+        
+        expect(moment(post1.createTime).format('LLLL')).toBe("Saturday, December 5, 2020 1:53 PM"); 
+    });
+});e
