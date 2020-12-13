@@ -110,6 +110,17 @@ describe('Posts', () => {
 describe('Posts', () => {
 
     const wrapper = mount(Posts, {router, store, localVue});
+    it('If post has media content, tags are rendered, otherwise nothing is rendered', () => {
+
+        wrapper.vm.getPosts();
+        let post1=wrapper.vm.posts[0]
+        expect(post1.prop("media").type).toEqual(testData[0].prop("media").type);
+    });
+});
+
+describe('Posts', () => {
+
+    const wrapper = mount(Posts, {router, store, localVue});
     it('Date in correct format. ', () => {
         wrapper.vm.getPosts();
         let post1=wrapper.vm.posts[0]
